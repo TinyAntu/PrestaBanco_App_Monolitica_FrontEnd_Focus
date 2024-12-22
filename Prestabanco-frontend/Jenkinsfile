@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+    tools {
+        nodejs 'NodeJS_20' 
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/TinyAntu/PrestaBanco_App_Monolitica.git']])
+                
+            }
+        }
+
+         stage('Install dependencies') {
+            steps {
+                dir('Prestabanco-frontend') {
+                    bat 'npm install' // Instala las dependencias necesarias
+                }  
+            }
+        }
+
+        stage('Build React app') {
+            steps {
+                dir('Prestabanco-frontend') {
+                bat 'npm run build' // Construye la app y genera la carpeta 'dist'
+                }
+            }
+        }
+
+        stage('Build docker image') {
+            steps {
+                script {
+                    bat 'docker build -t tinyantu/prestabanco-frontend:latest -f Prestabanco-frontend/Dockerfile Prestabanco-frontend'
+                }
+            }
+        }
+
+        stage('Push image to Docker Hub') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dckhubpassword', variable: 'dhpsw')]) {
+                        bat 'docker login -u tinyantu -p %dhpsw%'
+                    }
+                    bat 'docker push tinyantu/prestabanco-frontend:latest' 
+                }
+            }
+        }
+    }
+}

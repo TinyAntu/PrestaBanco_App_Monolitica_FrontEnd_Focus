@@ -1,0 +1,26 @@
+
+services:
+  postgre-db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: PrestaBanco
+    ports:
+      - 51000:5432
+  app:
+    container_name: prestabanco_docker
+    image: tinyantu/prestabanco_app_monolitica
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgre-db:5432/PrestaBanco?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - postgre-db

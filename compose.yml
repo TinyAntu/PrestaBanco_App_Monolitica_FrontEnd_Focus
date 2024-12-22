@@ -1,0 +1,93 @@
+version: "3.8"
+
+services:
+  # Frontend services
+  frontend1:
+    image: tinyantu/prestabanco-frontend:latest
+    networks:
+      - frontend-network
+
+  frontend2:
+    image: tinyantu/prestabanco-frontend:latest
+    networks:
+      - frontend-network
+
+  frontend3:
+    image: tinyantu/prestabanco-frontend:latest
+    networks:
+      - frontend-network
+
+  # Backend services
+  backend1:
+    image: tinyantu/prestabanco-backend:latest
+    environment:
+      - DB_HOST=db
+    networks:
+      - backend-network
+    depends_on:
+      - db
+  backend2:
+    image: tinyantu/prestabanco-backend:latest
+    environment:
+      - DB_HOST=db
+    networks:
+      - backend-network
+    depends_on:
+      - db
+
+  backend3:
+    image: tinyantu/prestabanco-backend:latest
+    environment:
+      - DB_HOST=db
+    networks:
+      - backend-network
+    depends_on:
+      - db
+
+  # Nginx for frontend load balancing
+  nginx-frontend:
+    image: nginx:latest
+    ports:
+      - "8070:80"
+    volumes:
+      - ./nginx-frontend.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend1
+      - frontend2
+      - frontend3
+    networks:
+      - frontend-network
+
+  # Nginx for backend load balancing
+  nginx-backend:
+    image: nginx:latest
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./nginx-backend.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+    networks:
+      - backend-network
+
+  # PostgreSQL Database
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=PrestaBanco
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+    
+
+networks:
+  frontend-network:
+  backend-network:
+volumes:
+  postgres_data:
