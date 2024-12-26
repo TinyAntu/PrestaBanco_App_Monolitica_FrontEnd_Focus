@@ -4,7 +4,8 @@ import {
   FormControl,
   TextField,
   Button,
-  Typography, MenuItem
+  Typography, MenuItem,
+  Modal
 } from '@mui/material';
 import creditService from '../services/credit.service';
 
@@ -13,10 +14,15 @@ const SimulateCredit = () => {
     const [years, setYears] = useState("");
     const [type, setType] = useState("");
     const [annual_interest, setAnnualInterest] = useState("");
-    const [additionalText, setAdditionalText] = useState("");
     const [monthlyPayment, setMonthlyPayment] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [modalText, setModalText] = useState("");
 
     const simulateCredit = (e) => {
+        if (!type) {
+            alert("Por favor, seleccione algun tipo de crédito antes de simular.");
+            return; // Detiene la ejecución si no se selecciona un tipo de crédito
+        }
       e.preventDefault();
       console.log("Simulate credit", capital, "-", annual_interest, "-", years);
       creditService
@@ -68,8 +74,12 @@ const SimulateCredit = () => {
               default:
                   text = "";
           }
-          setAdditionalText(text);
+          
+            setModalText(text);
+            setShowModal(true); // Mostrar el modal
     };
+
+    const handleCloseModal = () => setShowModal(false);
 
     //For type of credit to show the needed information
     const handleCreditype = (event) => {
@@ -166,6 +176,7 @@ const SimulateCredit = () => {
                   inputProps={{
                       min: interestLimits.min,
                       max: interestLimits.max,
+                      step: 0.5,
                   }}
               />
           </FormControl>
@@ -192,11 +203,51 @@ const SimulateCredit = () => {
               </Typography>
           )}
 
-          {additionalText && (
-              <Typography variant="h6" sx={{ whiteSpace: 'pre-line', marginTop: 2 }}>
-              {additionalText}
-            </Typography>
-          )}
+            <Modal
+                open={showModal}
+                onClose={handleCloseModal}
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+            >
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        bgcolor: "background.paper",
+                        boxShadow: 24,
+                        p: 4,
+                        borderRadius: 2,
+                        width: "700px",
+                    }}
+                >
+                    <Typography id="modal-title" variant="h10" component="h2" sx={{ marginBottom: 2 }}>
+                        Información del Crédito
+                    </Typography>
+                    <Typography id="modal-description" sx={{ whiteSpace: "pre-line" }}>
+                        {modalText}
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            marginTop: 2,
+                            
+                        }}
+                    >
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleCloseModal}
+                            sx={{ marginTop: 2 }}
+                           
+                        >   
+                            Cerrar
+                        </Button>
+                    </Box>
+                </Box>
+            </Modal>
       </Box>
   );
 };

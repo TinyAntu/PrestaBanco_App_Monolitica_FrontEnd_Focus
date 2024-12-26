@@ -2,6 +2,7 @@ package tinyantu.prestabancobackend.services;
 import tinyantu.prestabancobackend.entities.CreditEntity;
 import tinyantu.prestabancobackend.entities.DocumentEntity;
 import tinyantu.prestabancobackend.entities.UserEntity;
+import tinyantu.prestabancobackend.exceptions.BadRequestException;
 import tinyantu.prestabancobackend.repositories.CreditRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,16 @@ public class CreditService {
 
 
     public Long montly_Share(Integer Capital, Double Annual_interest, Double Years){
+
+        if(Capital == null){
+            throw new BadRequestException("Por Favor ingrese algun valor para el Capital");
+        }
+        if(Annual_interest == null){
+            throw new BadRequestException("Por Favor ingrese algun valor para el Interes Anual");
+        }
+        if(Years == null){
+            throw new BadRequestException("Por Favor ingrese algun valor para los Años");
+        }
         Double M = 0.0;
         Double r = Annual_interest/100/12;
         Double n = Years*12;
