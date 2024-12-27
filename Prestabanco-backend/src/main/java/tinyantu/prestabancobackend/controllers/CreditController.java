@@ -25,7 +25,7 @@ public class CreditController {
     public ResponseEntity<CreditEntity> saveCredit(@RequestBody CreditEntity credit){
         CreditEntity Credit = creditService.saveCredit(credit.getCapital(), credit.getAnnual_interest(), credit.getYears(),
                 credit.getType(), credit.getIncome(), credit.getProperty_value(), credit.getDebt(), credit.getUserId());
-        return ResponseEntity.ok(Credit);
+        return ResponseEntity.status(HttpStatus.CREATED).body(Credit);
     }
 
 

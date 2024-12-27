@@ -24,6 +24,53 @@ public class CreditService {
 
     public CreditEntity saveCredit(Integer capital, Double annual_interest, Double years, Integer type,
                                    Integer income, Integer property_value, Integer debt, Long userId) {
+        //Comprobaciones de Null
+        if (capital == null) {
+            throw new BadRequestException("Por favor, ingrese algun valor para el Capital del Credito");
+        }else if (annual_interest == null) {
+            throw new BadRequestException("Por favor, ingrese algun valor para el Interez Anual del Credito");
+        }else if (years == null) {
+            throw new BadRequestException("Por favor, ingrese algun valor para los Años del Credito");
+        }else if (type == null) {
+            throw new BadRequestException("Por favor, seleccione un Tipo de Credito");
+        }else if (income == null) {
+            throw new BadRequestException("Por favor, ingrese algun valor para sus Ingresos");
+        }else if (property_value == null) {
+            throw new BadRequestException("Por favor, ingrese algun valor para el Valor de la Propiedad");
+        }else if (debt == null) {
+            throw new BadRequestException("Por favor, ingrese algun valor para las Deudas Actuales que posea");
+        }
+
+        //Comprobaciones de numeros negativos
+        if (capital < 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo para el Capital del Credito");
+        }else if (annual_interest < 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo para el Interez Anual del Credito");
+        }else if (years < 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo para los Años del Credito");
+        }else if (type < 0) {
+            throw new BadRequestException("Por favor, seleccione un Tipo de Credito");
+        }else if (income < 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo valor para sus Ingresos");
+        }else if (property_value < 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo para el Valor de la Propiedad");
+        }else if (debt < 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo para las Deudas Actuales que posea");
+        }
+
+        //Comprobaciones de valores 0
+
+        if (annual_interest == 0) {
+            throw new BadRequestException("Por favor, ingrese un valor no negativo para el Interez Anual del Credito");
+        }else if (years == 0) {
+            throw new BadRequestException("Por favor, no ingrese 0 Años (minimo 1)");
+        }else if (income == 0) {
+            throw new BadRequestException("No se puede solicitar un Credito si no se cuenta con Ingresos (Ingresos = 0)");
+        }else if (property_value == 0) {
+            throw new BadRequestException("No se puede solicitar un Credito si la Propiedad no tiene valor (Valor de la propiedad = 0)");
+        }
+
+
         CreditEntity credit = CreditEntity.builder()
                 .capital(capital)
                 .annual_interest(annual_interest)
@@ -43,8 +90,15 @@ public class CreditService {
     public Long montly_Share(Integer Capital, Double Annual_interest, Double Years){
 
         if (Capital < 0) {
-
             throw new BadRequestException("Por favor, ingrese algún valor no negativo en el Capital");
+        }
+
+        if (Years < 0) {
+            throw new BadRequestException("Por favor, no ingrese Años negativos");
+        }
+
+        if (Years == 0) {
+            throw new BadRequestException("Por favor, no ingrese 0 Años (minimo 1)");
         }
 
         Double M = 0.0;

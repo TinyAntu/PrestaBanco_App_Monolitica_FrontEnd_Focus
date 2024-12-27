@@ -104,8 +104,14 @@ const CreditApplication = () => {
             alert("Crédito y documentos subidos exitosamente.");
             navigate("/home"); 
         } catch (error) {
-            console.error("Error al crear el crédito o documentos:", error);
-            alert("Error al crear el crédito. Intenta de nuevo.");
+            if (error.response && error.response.data) {
+                // Si el error tiene un mensaje, lo mostramos
+                console.log("Error:", error.response);
+                alert(`Error: ${error.response.data}`);
+            }else {
+                // Si no, mostramos un mensaje por defecto
+                alert("Error desconocido, por favor intente más tarde.");
+            }
         }
     };
 
@@ -180,6 +186,7 @@ const CreditApplication = () => {
                             inputProps={{
                                 min: interestLimits.min,
                                 max: interestLimits.max,
+                                step: 0.5,
                             }}
                         />
                     </FormControl>
