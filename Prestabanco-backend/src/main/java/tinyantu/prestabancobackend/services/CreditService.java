@@ -42,15 +42,11 @@ public class CreditService {
 
     public Long montly_Share(Integer Capital, Double Annual_interest, Double Years){
 
-        if(Capital == null){
-            throw new BadRequestException("Por Favor ingrese algun valor para el Capital");
+        if (Capital < 0) {
+
+            throw new BadRequestException("Por favor, ingrese algún valor no negativo en el Capital");
         }
-        if(Annual_interest == null){
-            throw new BadRequestException("Por Favor ingrese algun valor para el Interes Anual");
-        }
-        if(Years == null){
-            throw new BadRequestException("Por Favor ingrese algun valor para los Años");
-        }
+
         Double M = 0.0;
         Double r = Annual_interest/100/12;
         Double n = Years*12;

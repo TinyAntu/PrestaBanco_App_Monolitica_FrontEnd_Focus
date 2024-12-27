@@ -1,4 +1,5 @@
 package tinyantu.prestabancobackend.controllers;
+import org.springframework.http.HttpStatus;
 import tinyantu.prestabancobackend.entities.CreditEntity;
 import tinyantu.prestabancobackend.services.DocumentService;
 import tinyantu.prestabancobackend.services.UserService;
@@ -33,7 +34,7 @@ public class CreditController {
                                                          @RequestParam("annual_interest") double interest,
                                                          @RequestParam("years") double years) {
         Long monthlyPayment = creditService.montly_Share(capital, interest, years);
-        return ResponseEntity.ok(monthlyPayment); // The value of monthly payment
+        return ResponseEntity.status(HttpStatus.CREATED).body(monthlyPayment); // The value of monthly payment
     }
 
 

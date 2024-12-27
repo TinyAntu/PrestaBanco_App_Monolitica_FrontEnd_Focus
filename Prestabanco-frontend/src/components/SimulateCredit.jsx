@@ -17,66 +17,90 @@ const SimulateCredit = () => {
     const [monthlyPayment, setMonthlyPayment] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [modalText, setModalText] = useState("");
+    const [flag, setFlag] = useState(false);
 
     const simulateCredit = (e) => {
+        setFlag(false); // Inicializamos en false
         if (!type) {
             alert("Por favor, seleccione algun tipo de crédito antes de simular.");
             return; // Detiene la ejecución si no se selecciona un tipo de crédito
         }
-      e.preventDefault();
-      console.log("Simulate credit", capital, "-", annual_interest, "-", years);
-      creditService
-        .simulate(capital, annual_interest, years)
-        .then(response => {
-          console.log("Results:", response.data);
-          setMonthlyPayment(`Monthly share: ${response.data} pesos`);
-        })
-        .catch(error => {
-          console.error("Error while simulating:", error);
-          setMonthlyPayment("Error please try again.");
-        });
-         let text = "";
-          switch (type) {
-              case "1":
-                  text = `Primera vivienda: Cuenta con un plazo máximo de 30 años.\n
-          La tasa de interés anual se encuentra estipulada en la simulación.\n
-          El monto máximo de financiamiento es de 80% del valor de la propiedad y tendrá que facilitar documentos:\n
-          - Comprobante de ingresos.\n
-          - Certificado de avalúo.\n
-          - Historial crediticio.`;
-                  break;
-              case "2":
-                  text = `Segunda vivienda: Cuenta con un plazo máximo de 20 años.\n
-          La tasa de interés anual se encuentra estipulada en la simulación.\n
-          El monto máximo de financiamiento es de 70% del valor de la propiedad y tendrá que facilitar documentos:\n
-          - Comprobante de ingresos.\n
-          - Certificado de avalúo.\n
-          - Escritura de la primera vivienda.\n
-          - Historial crediticio.`;
-                  break;
-              case "3":
-                  text = `Propiedades comerciales: Cuenta con un plazo máximo de 25 años.\n
-          La tasa de interés anual se encuentra estipulada en la simulación.\n
-          El monto máximo de financiamiento es de 60% del valor de la propiedad y tendrá que facilitar documentos:\n
-          - Estado financiero del negocio.\n
-          - Comprobante de ingresos.\n
-          - Certificado de avalúo.\n
-          - Plan de negocios.`;
-                  break;
-              case "4":
-                  text = `Remodelación: Cuenta con un plazo máximo de 15 años.\n
-          La tasa de interés anual se encuentra estipulada en la simulación.\n
-          El monto máximo de financiamiento es de 50% del valor de la propiedad y tendrá que facilitar documentos:\n
-          - Comprobante de ingresos.\n
-          - Presupuesto de la remodelación.\n
-          - Certificado de avalúo actualizado.`;
-                  break;
-              default:
-                  text = "";
-          }
-          
-            setModalText(text);
-            setShowModal(true); // Mostrar el modal
+    
+        e.preventDefault();
+        console.log("Simulate credit", capital, "-", annual_interest, "-", years);
+    
+        creditService
+            .simulate(capital, annual_interest, years)
+            .then(response => {
+                setFlag(true); // Se marca como éxito
+                console.log("Results:", response.data);
+                setMonthlyPayment(`Monthly share: ${response.data} pesos`);
+    
+                // Lógica del modal cuando la simulación es exitosa
+                let text = "";
+                switch (type) {
+                    case "1":
+                        text = `Primera vivienda: Cuenta con un plazo máximo de 30 años.\n
+              La tasa de interés anual se encuentra estipulada en la simulación.\n
+              El monto máximo de financiamiento es de 80% del valor de la propiedad y tendrá que facilitar documentos:\n
+              - Comprobante de ingresos.\n
+              - Certificado de avalúo.\n
+              - Historial crediticio.`;
+                        break;
+                    case "2":
+                        text = `Segunda vivienda: Cuenta con un plazo máximo de 20 años.\n
+              La tasa de interés anual se encuentra estipulada en la simulación.\n
+              El monto máximo de financiamiento es de 70% del valor de la propiedad y tendrá que facilitar documentos:\n
+              - Comprobante de ingresos.\n
+              - Certificado de avalúo.\n
+              - Escritura de la primera vivienda.\n
+              - Historial crediticio.`;
+                        break;
+                    case "3":
+                        text = `Propiedades comerciales: Cuenta con un plazo máximo de 25 años.\n
+              La tasa de interés anual se encuentra estipulada en la simulación.\n
+              El monto máximo de financiamiento es de 60% del valor de la propiedad y tendrá que facilitar documentos:\n
+              - Estado financiero del negocio.\n
+              - Comprobante de ingresos.\n
+              - Certificado de avalúo.\n
+              - Plan de negocios.`;
+                        break;
+                    case "4":
+                        text = `Remodelación: Cuenta con un plazo máximo de 15 años.\n
+              La tasa de interés anual se encuentra estipulada en la simulación.\n
+              El monto máximo de financiamiento es de 50% del valor de la propiedad y tendrá que facilitar documentos:\n
+              - Comprobante de ingresos.\n
+              - Presupuesto de la remodelación.\n
+              - Certificado de avalúo actualizado.`;
+                        break;
+                    default:
+                        text = "";
+                }
+    
+                setModalText(text);
+                setShowModal(true); // Mostrar el modal
+            })
+            .catch(error => {
+                setFlag(false); // Aseguramos que el flag siga en false
+                // Aquí manejamos los errores
+                
+                if(capital === "") {
+                    alert("Por favor, rellene el Capital antes de Simular.");
+                }else if(annual_interest === "") {
+                    alert("Por favor, rellene la Tasa de Interés antes de Simular.");
+                }else if(years === "") {
+                    alert("Por favor, rellene los Años antes de Simular.");
+                    
+                }else if (error.response && error.response.data) {
+                    // Si el error tiene un mensaje, lo mostramos
+                    console.log("Error:", error.response);
+                    alert(`Error: ${error.response.data}`);
+                }else {
+                    // Si no, mostramos un mensaje por defecto
+                    alert("Error desconocido, por favor intente más tarde.");
+                }
+                console.error("Error al Simular el credito", error);
+            });
     };
 
     const handleCloseModal = () => setShowModal(false);
