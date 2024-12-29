@@ -28,6 +28,23 @@ const CreditApplication = () => {
         setDocuments({}); // Reset documents when changing credit type
     };
 
+    const requiredDocuments = {
+        "1": ["comprobante_ingresos", "certificado_avaluo", "historial_credito"],
+        "2": ["comprobante_ingresos", "certificado_avaluo", "escritura_primera_vivienda", "historial_credito"],
+        "3": ["estado_financiero", "comprobante_ingresos", "certificado_avaluo", "plan_negocio"],
+        "4": ["comprobante_ingresos", "presupuesto_remodelacion", "certificado_avaluo"]
+    };
+    
+
+    const renderDocumentStatus = () => {
+        const required = requiredDocuments[type] || [];
+        return required.map((doc) => (
+            <div key={doc}>
+                {doc}: {documents[doc] ? "Subido ✅" : "Falta ❌"}
+            </div>
+        ));
+    };
+
     const getInterestLimits = () => {
         switch (type) {
             case "1":
@@ -46,27 +63,41 @@ const CreditApplication = () => {
     const interestLimits = getInterestLimits();
 
     const handleDocumentChange = (e, docType) => {
-        const file = e.target.files[0]; // Obtener el archivo seleccionado
-        const reader = new FileReader();
+        const file = e.target.files[0];
+        if (!file) return;
     
+        const reader = new FileReader();
         reader.onloadend = () => {
-            const base64File = reader.result.split(',')[1]; // Convertir a base64 y eliminar el encabezado
-            setDocuments((prevDocs) => ({ 
-                ...prevDocs, 
-                [docType]: { file: base64File, doc_type: docType, filename: file.name } 
+            const base64File = reader.result.split(",")[1];
+            setDocuments((prevDocs) => ({
+                ...prevDocs,
+                [docType]: { file: base64File, doc_type: docType, filename: file.name },
             }));
         };
     
-        reader.readAsDataURL(file); // Leer el archivo como Data URL para convertirlo a base64
+        reader.readAsDataURL(file);
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        const required = requiredDocuments[type] || [];
+        const missingDocuments = required.filter((doc) => !documents[doc]);
+
+        if (missingDocuments.length > 0) {
+            alert(`Faltan los siguientes documentos: ${missingDocuments.join(", ")}`);
+            return; // Detener el envío si faltan documentos
+        }
+
         const interest = parseFloat(annual_interest);
         if (interest < interestLimits.min || interest > interestLimits.max) {
             alert(`La tasa de interés debe estar entre ${interestLimits.min} y ${interestLimits.max}.`);
             return; // Stop submission if the interest is out of range
+        }
+
+        const userConfirmed = window.confirm("¿Está seguro de que desea solicitar este crédito?");
+        if (!userConfirmed) {
+            return; // Detener si el usuario no confirma
         }
 
         try {
@@ -230,6 +261,9 @@ const CreditApplication = () => {
                             onChange={(e) => setDebt(e.target.value)}
                         />
                     </FormControl>
+
+                    <h3>Estado de los documentos requeridos:</h3>
+                    {renderDocumentStatus()}
 
                     {/* Campos de carga de documentos basados en el tipo de crédito */}    
                     {/* Primera vivienda */}          
