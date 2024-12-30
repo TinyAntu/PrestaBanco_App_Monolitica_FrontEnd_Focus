@@ -131,48 +131,69 @@ const CreditEvaluation = () => {
   };
 
   const handleLevelUp = () => {
+
+    const userConfirmed = window.confirm("¿Está seguro de que desea avanzar al siguiente nivel este crédito?");
+        if (!userConfirmed) {
+            return; // Detener si el usuario no confirma
+        }
+
     if (selectedCredit && evaluationResult === true) {
       const updatedCredit = { ...selectedCredit, level: selectedCredit.level + 1 };
 
       creditService.update(selectedCredit.idCredit, updatedCredit)
         .then(() => {
+          alert("Crédito subido de nivel correctamente");
           console.log("Level up successful");
           init();
           setOpenDialog(false);
         })
         .catch((error) => {
+          alert("Error de conexion al intentar subir de nivel el crédito.");
           console.log("Error while leveling up", error);
         });
     }
   };
 
   const handleAprove = () =>{
+    const userConfirmed = window.confirm("¿Está seguro de que desea aprovar este crédito?");
+        if (!userConfirmed) {
+            return; // Detener si el usuario no confirma
+        }
     if (selectedCredit) {
       const updatedCredit = { ...selectedCredit, state: true, e: 4 };
       creditService.update(selectedCredit.idCredit, updatedCredit)
         .then(() => {
+          alert("Crédito ha sido aprobado correctamente");
           console.log("Aproved credit successfully");
           init();
           setOpenDialog(false);
         })
         .catch((error) => {
+          alert("Error de conexion al aprobar el crédito intente nuevamente.");
           console.log("Error while aproving the credit", error);
         });
     }
   };
 
   const handleReject = () =>{
+
+    const userConfirmed = window.confirm("¿Está seguro de que desea cancelar este crédito?");
+        if (!userConfirmed) {
+            return; // Detener si el usuario no confirma
+        }
     if (selectedCredit) {
       const updatedCredit = { ...selectedCredit, state: false, e: 7 };
       
 
       creditService.update(selectedCredit.idCredit, updatedCredit)
         .then(() => {
+          alert("Crédito ha sido rechazado rechazado correctamente");
           console.log("Crédito rechazado");
           init();
           setOpenDialog(false);
         })
         .catch((error) => {
+          alert("Error de conexion al intentar rechazar el crédito.");
           console.log("Error al intentar rechazar el crédito.", error);
         });
     }
