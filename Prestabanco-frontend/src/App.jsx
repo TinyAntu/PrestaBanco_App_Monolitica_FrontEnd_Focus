@@ -9,6 +9,7 @@ import UserRegister from './components/UserRegister';
 import UserLogin from './components/UserLogin';
 import CreditEvaluation from './components/CreditEvaluation';
 import FollowCredits from './components/FollowCredits';
+import Documentation from './components/Documentation';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
               <Route path="/user/login" element={<UserLogin/>} />
               <Route path="/credits/create/:userId" element={<CreditApplication />} />
               <Route path="/credits/follow" element={<FollowCredits />} />
+              <Route path="/help" element={<Documentation />} />
+              
               <Route path="*" element={<NotFound/>} />
             </Routes>
           </div>

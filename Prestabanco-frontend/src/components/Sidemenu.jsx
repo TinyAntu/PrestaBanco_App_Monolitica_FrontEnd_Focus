@@ -6,14 +6,9 @@ import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import PaidIcon from "@mui/icons-material/Paid";
+import { QuestionMark } from "@mui/icons-material";
 import CalculateIcon from "@mui/icons-material/Calculate";
-import AnalyticsIcon from "@mui/icons-material/Analytics";
-import DiscountIcon from "@mui/icons-material/Discount";
-import HailIcon from "@mui/icons-material/Hail";
-import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
-import MoreTimeIcon from "@mui/icons-material/MoreTime";
+import PaidIcon from "@mui/icons-material/Paid";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
@@ -32,6 +27,53 @@ export default function Sidemenu({ open, toggleDrawer }) {
       navigate("/user/login");
     }
   };
+
+  React.useEffect(() => {
+    const handleKeydown = (event) => {
+
+      // Atajo para "Home" (Ctrl+0)
+      if (event.ctrlKey && event.key === "0") {
+        handleNavigation("/home");
+      }
+
+      // Atajo para "Simular un Crédito" (Ctrl+1)
+      if (event.ctrlKey && event.key === "1") {
+        handleNavigation("/credits/simulate");
+      }
+
+      // Atajo para "Solicitar Crédito" (Ctrl+2)
+      if (event.ctrlKey && event.key === "2") {
+        if (isLog()) {
+          const userId = localStorage.getItem("userId");
+          navigate(`/credits/create/${userId}`);
+        } else {
+          alert("Please log in to enter.");
+          navigate("/user/login");
+        }
+      }
+
+      // Atajo para "Evaluar Créditos" (Ctrl+3)
+      if (event.ctrlKey && event.key === "3") {
+        handleNavigation("/credits/getAll");
+      }
+
+      // Atajo para "Documentacion" (Ctrl+9)
+      if (event.ctrlKey && event.key === "9") {
+        handleNavigation("/help");
+      }
+
+    };
+
+    // Añadir listener de teclado
+    window.addEventListener("keydown", handleKeydown);
+
+    return () => {
+      // Limpiar listener al desmontar el componente
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [navigate]); // Dependencia de `navigate`
+
+
 
   const listOptions = () => (
     <Box
@@ -90,6 +132,13 @@ export default function Sidemenu({ open, toggleDrawer }) {
             <CalculateIcon />
           </ListItemIcon>
           <ListItemText primary="Evaluar creditos" />
+        </ListItemButton>
+
+        <ListItemButton onClick={() => handleNavigation("/help")}>
+          <ListItemIcon>
+            <QuestionMark />
+          </ListItemIcon>
+          <ListItemText primary="Ayuda y Documentacion" />
         </ListItemButton>
         
       </List>
