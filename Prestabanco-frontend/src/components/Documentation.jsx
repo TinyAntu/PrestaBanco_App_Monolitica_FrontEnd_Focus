@@ -16,6 +16,7 @@ export default function CreditInfo() {
             </p>
           </div>
         );
+      
       case "request":
         return (
           <div>
@@ -53,6 +54,27 @@ export default function CreditInfo() {
             </p>
           </div>
         );
+      case "Atajos":
+        return(
+          <div>
+            <h2>Atajos</h2>
+            <p>
+              Combinaciones de teclas para acceso rapido<br />
+              <br />
+              Home : ctrl + 0
+              <br />
+              Simular Credito : ctrl + 1
+              <br />
+              Solicitar Credito : ctrl + 2
+              <br />
+              Evaluar Credito : ctrl + 3
+              <br />
+              Ayuda : ctrl + 9
+              <br />
+            </p>
+          </div>
+        );
+      
       default:
         return null;
     }
@@ -101,6 +123,20 @@ export default function CreditInfo() {
         >
           Evaluar
         </button>
+        <button
+          onClick={() => setActiveTab("Atajos")}
+          style={{
+            padding: "10px 20px",
+            margin: "0 10px",
+            backgroundColor: activeTab === "Atajos" ? "#007BFF" : "#EEE",
+            color: activeTab === "Atajos" ? "#FFF" : "#000",
+            border: "none",
+            cursor: "pointer",
+          }}
+          >
+            Atajos
+          </button>
+        
       </div>
 
       {/* Content */}

@@ -906,631 +906,6 @@
       "value": ""
     }]
   }, {
-    "id": "9c081063-183e-4274-bdf4-0116ae524d4b",
-    "name": "Solicitud de Credito Fallida Sin Capital",
-    "commands": []
-  }, {
-    "id": "405ecaa8-3943-4c09-831f-106b5235a835",
-    "name": "Evaluar Credito Existoso",
-    "commands": [{
-      "id": "e26e5970-8ff5-42cd-ba9b-644004d1270c",
-      "comment": "",
-      "command": "open",
-      "target": "http://localhost:5173/#/credits/getAll",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "2b0fb0bc-a34a-4921-b301-91dc63f581aa",
-      "comment": "",
-      "command": "setWindowSize",
-      "target": "1281x691",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "853f36f0-5749-467a-8e7a-142a7cf7e3bc",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "65efa102-e23d-4037-ad69-7f6c730eeccf",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "0a39d55d-7b47-4ef2-b22b-bf1795b0a9ee",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "cb5666e6-179d-4074-a1c1-3a3dc6de0eb2",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea avanzar al siguiente nivel este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "23e3fc59-c19a-4288-a7be-e4203a01fa94",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "00cffb6e-4e00-4a7f-a283-c9f2df550fff",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito subido de nivel correctamente",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "d4338e53-04f9-4d7d-b1b5-b7487520d332",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "b7d03105-5ebf-4c86-8c1b-372720713e6b",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "afe759bc-65bb-4ab6-bf18-6e72b002f6b9",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "a8204ce3-eb8f-493a-900d-06ad3ebf372a",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "da118a32-d99c-4515-b788-779f23cd2dfc",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "812bfdca-0f09-4c42-b1f9-46f8b82fe697",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea avanzar al siguiente nivel este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "c1f5bf7d-9a41-4efd-8a6b-41ce17459910",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "71e73d8d-6e15-4f42-803c-a379ba023815",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito subido de nivel correctamente",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "03fd8fc3-b202-4b8d-8e21-437896334a30",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "2e883297-e3e1-4c65-9b13-727e040cb55a",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "e4ab38d5-2c03-4582-8158-f42a2403b86d",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.MuiButton-contained:nth-child(1)",
-      "targets": [
-        ["css=.MuiButton-contained:nth-child(1)", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "c21f28d6-e298-4c43-9344-044418ca49b0",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "3b60acb7-d980-4047-b250-8fce53ec2811",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "17c6630e-8fde-4c2b-934c-388b9730d11f",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea avanzar al siguiente nivel este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "75b518b1-257b-4bac-8ac4-8ffbadb65d3a",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "00b32432-6aed-46f9-9771-d741fc6eff22",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito subido de nivel correctamente",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "ceb67619-a8ba-4d62-9d14-2c52c60a98ef",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "920dc56a-3a53-437a-beff-78c3f49afd6a",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "38b2d433-6d44-4458-9213-f79a7cec7e05",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.MuiButton-contained:nth-child(1)",
-      "targets": [
-        ["css=.MuiButton-contained:nth-child(1)", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "bc9b58d4-26b9-4f7e-9cf2-542672cf8516",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "05615c32-6625-419b-af8d-9787357452a5",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "75a94b06-5bcd-489a-9ed0-e67f28c04b43",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea avanzar al siguiente nivel este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "1c3552fd-0f2b-4453-923c-fd8646f49828",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "2cdc7e1c-94b6-441a-be8d-a8dc825813d9",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito subido de nivel correctamente",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "91c4fb25-e811-4379-9c91-b9be60029e8b",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "18096efd-a7c1-4848-be62-3e029f8748ef",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "92ca28ca-a46a-41a8-be51-ab6cd79dd6a0",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "7106106d-4d9d-4c05-98f0-328e6780316a",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea avanzar al siguiente nivel este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "98933845-5d30-429e-85df-599ef7a9b708",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "c45171fd-76c8-4ea7-9b27-f7a5455cdcd2",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito subido de nivel correctamente",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "4eccc068-6465-4e4c-980f-54a02531dac7",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "40e5e6c9-8260-41ac-904a-a4c938387965",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "d6cd52ea-6515-4b6b-a67e-c815daab202f",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.MuiButton-contained:nth-child(1)",
-      "targets": [
-        ["css=.MuiButton-contained:nth-child(1)", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "710f24ab-7a4e-46ed-bdda-89149e65f346",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "c09961f7-5fe4-4cd5-897d-b300487eeaaf",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "d749baab-f368-4f6e-820a-5e9dd927789c",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "0449b28f-c6b1-48a9-b61e-37e529ad4352",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.MuiButton-containedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-containedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "fdc5ec41-afd3-4c9f-984d-9d14a2644092",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea avanzar al siguiente nivel este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "70ef19cf-2d13-4af7-947d-9a2d0e9141e8",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "7d7a805b-92f8-4a28-94de-d486dec6c65a",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito subido de nivel correctamente",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "bd59f6ae-c0d0-4277-8a6a-30c33306372c",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "4f83413b-c2e8-4a92-be9c-a2c6aa4f6380",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-contained",
-      "targets": [
-        ["css=.MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "e6acb157-30ab-447d-b76a-762b5a238027",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.MuiButton-contained:nth-child(1)",
-      "targets": [
-        ["css=.MuiButton-contained:nth-child(1)", "css:finder"],
-        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='root']/div/div[2]/table/tbody/tr/td[7]/button", "xpath:idRelative"],
-        ["xpath=//td[7]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "701d66a1-ab13-4c9c-8149-06887f2ab77a",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=div:nth-child(2) > .MuiButtonBase-root:nth-child(2)",
-      "targets": [
-        ["css=div:nth-child(2) > .MuiButtonBase-root:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//p/div/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "6dbdb010-6575-4ab7-983d-bb36c14e1b5f",
-      "comment": "",
-      "command": "click",
-      "target": "css=div:nth-child(2) > .MuiButtonBase-root:nth-child(2)",
-      "targets": [
-        ["css=div:nth-child(2) > .MuiButtonBase-root:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//p/div/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "98c9668c-5b59-4ac6-8017-3eb7d5a85153",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=div:nth-child(2) > .MuiButton-contained",
-      "targets": [
-        ["css=div:nth-child(2) > .MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//p/div/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "e86a3395-659e-42f5-b982-6a969603b311",
-      "comment": "",
-      "command": "click",
-      "target": "css=div:nth-child(3) > .MuiButton-outlined:nth-child(2)",
-      "targets": [
-        ["css=div:nth-child(3) > .MuiButton-outlined:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "f06b02af-2d74-42a7-8220-7da2f8b0275e",
-      "comment": "",
-      "command": "runScript",
-      "target": "window.scrollTo(0,0)",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "118f3e87-7542-48b6-a455-87d9d2e92c1a",
-      "comment": "",
-      "command": "click",
-      "target": "css=div:nth-child(4) > .MuiButtonBase-root:nth-child(2)",
-      "targets": [
-        ["css=div:nth-child(4) > .MuiButtonBase-root:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
-        ["xpath=//div[3]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "3c87ad6e-edba-42ea-9e76-36fdf98af2e4",
-      "comment": "",
-      "command": "click",
-      "target": "css=div:nth-child(5) > .MuiButtonBase-root:nth-child(2)",
-      "targets": [
-        ["css=div:nth-child(5) > .MuiButtonBase-root:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[11]", "xpath:attributes"],
-        ["xpath=//div[4]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "04048ca2-d0ad-4856-bb6f-8562b33ebce8",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.MuiButton-outlinedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-outlinedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[13]", "xpath:attributes"],
-        ["xpath=//div[5]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "e5f72e98-9881-4506-87e2-889e51e91b53",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiButton-outlinedSizeMedium:nth-child(2)",
-      "targets": [
-        ["css=.MuiButton-outlinedSizeMedium:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[13]", "xpath:attributes"],
-        ["xpath=//div[5]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "7c86b0e2-4990-4028-a8e6-879ce92421b6",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=div:nth-child(6) > .MuiButton-contained",
-      "targets": [
-        ["css=div:nth-child(6) > .MuiButton-contained", "css:finder"],
-        ["xpath=(//button[@type='button'])[13]", "xpath:attributes"],
-        ["xpath=//div[5]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "f4863b56-1214-407c-b77a-e4a98641f5c2",
-      "comment": "",
-      "command": "chooseOkOnNextConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "4d14dea8-933d-4279-af97-883143050186",
-      "comment": "",
-      "command": "click",
-      "target": "css=.MuiDialogActions-root > .MuiButtonBase-root:nth-child(2)",
-      "targets": [
-        ["css=.MuiDialogActions-root > .MuiButtonBase-root:nth-child(2)", "css:finder"],
-        ["xpath=(//button[@type='button'])[19]", "xpath:attributes"],
-        ["xpath=//div/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "1c91f68d-faae-4b73-bfac-1ed043faaa69",
-      "comment": "",
-      "command": "assertConfirmation",
-      "target": "¿Está seguro de que desea aprovar este crédito?",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "6b88dec2-e53e-4db6-844c-d55f9a179949",
-      "comment": "",
-      "command": "webdriverChooseOkOnVisibleConfirmation",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "906630c0-dedc-4ea0-83d5-4b30567c0ec5",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Crédito ha sido aprobado correctamente",
-      "targets": [],
-      "value": ""
-    }]
-  }, {
     "id": "46bee2d1-efb5-4635-9026-34b5bf8e7d1a",
     "name": "Evaluar Credito Fallido R1",
     "commands": [{
@@ -1607,11 +982,88 @@
       "target": "Esta es una zona solo para ejecutivos",
       "targets": [],
       "value": ""
+    }]
+  }, {
+    "id": "27c6a3ff-643c-44a3-ac25-a0e5b93f8cd5",
+    "name": "Solicitud de Credito Fallida No Registro",
+    "commands": [{
+      "id": "2c94153b-95be-46e4-a199-99fd7ef48159",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/#/home",
+      "targets": [],
+      "value": ""
     }, {
-      "id": "f5df7edc-42d4-4dff-bb09-ef08597e34b4",
+      "id": "5070348a-877b-4379-8fe8-2544078bb89f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1281x691",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a4329cc-6ec0-4a7c-a306-faf0d3206f33",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiButton-root",
+      "targets": [
+        ["css=.MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/header/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fbda040-7d33-48a8-82ec-3e2e5901dfdc",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiIconButton-root",
+      "targets": [
+        ["css=.MuiIconButton-root", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/header/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "46219273-e7fb-40fc-a4bd-996d1d03a250",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiIconButton-root",
+      "targets": [
+        ["css=.MuiIconButton-root", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/header/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f99e1f6b-8956-4f66-93f2-083e32fbce92",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiIconButton-root",
+      "targets": [
+        ["css=.MuiIconButton-root", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/header/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "62129b40-1fa3-4ac1-a524-04160ad12fb2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiButtonBase-root:nth-child(4) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiButtonBase-root:nth-child(4) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[3]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Solicitar Crédito')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f56923e0-5791-4c83-8814-136b7e221895",
       "comment": "",
       "command": "assertAlert",
-      "target": "Esta es una zona solo para ejecutivos",
+      "target": "Please log in to enter.",
       "targets": [],
       "value": ""
     }]

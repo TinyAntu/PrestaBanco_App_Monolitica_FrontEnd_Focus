@@ -6,14 +6,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/TinyAntu/PrestaBanco_App_Monolitica.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/TinyAntu/PrestaBanco_App_Monolitica_FrontEnd_Focus.git']])
                 
             }
         }
 
          stage('Install dependencies') {
             steps {
-                dir('Prestabanco-frontend') {
+                dir('Prestabanco-frontend-frontfocus') {
                     bat 'npm install' // Instala las dependencias necesarias
                 }  
             }
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build React app') {
             steps {
-                dir('Prestabanco-frontend') {
+                dir('Prestabanco-frontend-frontfocus') {
                 bat 'npm run build' // Construye la app y genera la carpeta 'dist'
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    bat 'docker build -t tinyantu/prestabanco-frontend:latest -f Prestabanco-frontend/Dockerfile Prestabanco-frontend'
+                    bat 'docker build -t tinyantu/prestabanco-frontend:latest -f Prestabanco-frontend-frontfocus/Dockerfile Prestabanco-frontend-frontfocus'
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'dckhubpassword', variable: 'dhpsw')]) {
                         bat 'docker login -u tinyantu -p %dhpsw%'
                     }
-                    bat 'docker push tinyantu/prestabanco-frontend:latest' 
+                    bat 'docker push tinyantu/prestabanco-frontend-frontfocus:latest' 
                 }
             }
         }

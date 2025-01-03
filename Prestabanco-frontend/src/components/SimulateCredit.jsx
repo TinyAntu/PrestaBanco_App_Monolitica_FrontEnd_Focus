@@ -34,7 +34,7 @@ const SimulateCredit = () => {
             .then(response => {
                 setFlag(true); // Se marca como éxito
                 console.log("Results:", response.data);
-                setMonthlyPayment(`Monthly share: ${response.data} pesos`);
+                setMonthlyPayment(`Cuota Mensual: ${response.data} pesos`);
     
                 // Lógica del modal cuando la simulación es exitosa
                 let text = "";
