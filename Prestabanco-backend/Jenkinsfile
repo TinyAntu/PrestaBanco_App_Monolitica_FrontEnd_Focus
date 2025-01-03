@@ -35,7 +35,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'dckhubpassword', variable: 'dhpsw')]) {
                         bat 'docker login -u tinyantu -p %dhpsw%'
                     }
-                    bat 'docker push tinyantu/prestabanco-backend-frontfocus-frontfocus:latest'
+                    bat 'docker push tinyantu/prestabanco-backend-frontfocus:latest'
                 }
             }
         }
