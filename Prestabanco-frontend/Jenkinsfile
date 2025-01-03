@@ -13,7 +13,7 @@ pipeline {
 
          stage('Install dependencies') {
             steps {
-                dir('Prestabanco-frontend-frontfocus') {
+                dir('Prestabanco-frontend') {
                     bat 'npm install' // Instala las dependencias necesarias
                 }  
             }
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build React app') {
             steps {
-                dir('Prestabanco-frontend-frontfocus') {
+                dir('Prestabanco-frontend') {
                 bat 'npm run build' // Construye la app y genera la carpeta 'dist'
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    bat 'docker build -t tinyantu/prestabanco-frontend:latest -f Prestabanco-frontend-frontfocus/Dockerfile Prestabanco-frontend-frontfocus'
+                    bat 'docker build -t tinyantu/prestabanco-frontend:latest -f Prestabanco-frontend/Dockerfile Prestabanco-frontend'
                 }
             }
         }
