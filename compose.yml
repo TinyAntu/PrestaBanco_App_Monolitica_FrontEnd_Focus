@@ -3,23 +3,23 @@ version: "3.8"
 services:
   # Frontend services
   frontend1:
-    image: tinyantu/prestabanco-frontend:latest
+    image: tinyantu/prestabanco-frontend-frontfocus:latest
     networks:
       - frontend-network
 
   frontend2:
-    image: tinyantu/prestabanco-frontend:latest
+    image: tinyantu/prestabanco-frontend-frontfocus:latest
     networks:
       - frontend-network
 
   frontend3:
-    image: tinyantu/prestabanco-frontend:latest
+    image: tinyantu/prestabanco-frontend-frontfocus:latest
     networks:
       - frontend-network
 
   # Backend services
   backend1:
-    image: tinyantu/prestabanco-backend:latest
+    image: tinyantu/prestabanco-backend-frontfocus:latest
     environment:
       - DB_HOST=db
     networks:
@@ -27,7 +27,7 @@ services:
     depends_on:
       - db
   backend2:
-    image: tinyantu/prestabanco-backend:latest
+    image: tinyantu/prestabanco-backend-frontfocus:latest
     environment:
       - DB_HOST=db
     networks:
@@ -36,7 +36,7 @@ services:
       - db
 
   backend3:
-    image: tinyantu/prestabanco-backend:latest
+    image: tinyantu/prestabanco-backend-frontfocus:latest
     environment:
       - DB_HOST=db
     networks:
