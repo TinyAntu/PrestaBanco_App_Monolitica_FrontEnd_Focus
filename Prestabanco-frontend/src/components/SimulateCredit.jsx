@@ -90,7 +90,7 @@ const SimulateCredit = () => {
                     alert("Por favor, rellene la Tasa de Interés antes de Simular.");
                 }else if(years === "") {
                     alert("Por favor, rellene los Años antes de Simular.");
-                    
+                     
                 }else if (error.response && error.response.data) {
                     // Si el error tiene un mensaje, lo mostramos
                     console.log("Error:", error.response);
@@ -109,6 +109,35 @@ const SimulateCredit = () => {
     const handleCreditype = (event) => {
       setType(event.target.value);
       setAnnualInterest("");
+    };
+
+    const getYearsLimits = () =>{
+        switch (type) {
+            case "1":
+                return { min: 1, max: 30 }; // First home
+            case "2":
+                return { min: 1, max: 20 }; // Second home
+            case "3":
+                return { min: 1, max: 25 }; // Commercial properties
+            case "4":
+                return { min: 1, max: 15 }; // Remodeling
+            default:
+                return { min: 0, max: 0 };
+        }
+    };
+
+    const yearsLimits = getYearsLimits();
+
+    const handleYearsChange = (e) => {
+        const value = e.target.value;
+        const intValue = parseInt(value);
+        if (intValue >= yearsLimits.min && intValue <= yearsLimits.max) {
+            setYears(value);
+        } else if (value === "") {
+            setYears(value);
+        } else {
+            alert(`El plazo debe estar entre ${yearsLimits.min} y ${yearsLimits.max} años.`);
+        }
     };
 
     const getInterestLimits = () => {
@@ -178,7 +207,7 @@ const SimulateCredit = () => {
           <FormControl margin="normal">
               <TextField
                   id="capital"
-                  label="Capital"
+                  label="Capital $CLP"
                   type="number"
                   value={capital}
                   variant="outlined"
@@ -213,7 +242,12 @@ const SimulateCredit = () => {
                   value={years}
                   variant="outlined"
                   sx={{ width: '650px' }}
-                  onChange={(e) => setYears(e.target.value)}
+                  placeholder = {`Entre ${yearsLimits.min} y ${yearsLimits.max}`}
+                  onChange={handleYearsChange}
+                    inputProps={{
+                        min: yearsLimits.min,
+                        max: yearsLimits.max,
+                    }}
               />
           </FormControl>
 

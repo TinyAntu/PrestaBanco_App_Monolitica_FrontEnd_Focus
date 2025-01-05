@@ -35,6 +35,7 @@ const CreditEvaluation = () => {
       creditService.evaluateStep1(credit.idCredit)
         .then((response) => {
           setEvaluationResult(response.data);
+          console.log("Evaluacion de credito", response.data);
           setOpenDialog(true);
         })
         .catch((error) => {
@@ -85,6 +86,7 @@ const CreditEvaluation = () => {
     }
     if(credit.level === 7){
       setResponses([null, null, null, null, null]); // Reset responses for new evaluation
+      setEvaluationResult(true);
       setScore(0);
       setOpenDialog(true);
     }
@@ -170,6 +172,27 @@ const CreditEvaluation = () => {
         })
         .catch((error) => {
           alert("Error de conexion al aprobar el crédito intente nuevamente.");
+          console.log("Error while aproving the credit", error);
+        });
+    }
+  };
+
+  const handleMoreRev= ( ) => {
+    const userConfirmed = window.confirm("¿Está seguro de que desea realizar una revision adiacional a este crédito?");
+        if (!userConfirmed) {
+            return; // Detener si el usuario no confirma
+        }
+    if (selectedCredit) {
+      const updatedCredit = { ...selectedCredit, state: null, e: 3, level: 8 };
+      creditService.update(selectedCredit.idCredit, updatedCredit)
+        .then(() => {
+          alert("Crédito ha sido marcado para mas revisiones correctamente");
+          console.log("Aproved credit successfully");
+          init();
+          setOpenDialog(false);
+        })
+        .catch((error) => {
+          alert("Error de conexion al realizar mas revisiones al crédito intente nuevamente.");
           console.log("Error while aproving the credit", error);
         });
     }
@@ -294,8 +317,8 @@ const CreditEvaluation = () => {
                     {evaluationResult !== null && selectedCredit.level === 1 && (
                         <p>
                             {evaluationResult
-                                ? "Se cumple con el requerimiento de cuota/ingreso <= 35%."
-                                : "No se cumple con el requerimiento de cuota/ingreso <= 35%."}
+                                ? "Se cumple con el requerimiento de cuota/ingreso <= 35%. Incremente el nivel del Credito"
+                                : "No se cumple con el requerimiento de cuota/ingreso <= 35%. Rechace el Credito"}
                         </p>
                     )}
 
@@ -314,24 +337,24 @@ const CreditEvaluation = () => {
                     {evaluationResult !== null && selectedCredit.level === 4 && (
                         <p>
                             {evaluationResult
-                                ? "Se cumple con el requerimiento de suma de deudas es menor al 50% de los ingresos."
-                                : "La suma de las deudas excede el 50% del ingresos."}
+                                ? "Se cumple con el requerimiento de suma de deudas es menor al 50% de los ingresos. Incremente el nivel del Credito"
+                                : "La suma de las deudas excede el 50% del ingresos. Rechace el Credito"}
                         </p>
                     )}
 
                     {evaluationResult !== null && selectedCredit.level === 5 && (
                         <p>
                             {evaluationResult
-                                ? "El monto de financiamineto no excede el maximo designado para el tipo de credito."
-                                : "El monto de financiamineto excede el maximo designado para el tipo de credito."}
+                                ? "El monto de financiamineto no excede el maximo designado para el tipo de credito. Incremente el nivel del Credito"
+                                : "El monto de financiamineto excede el maximo designado para el tipo de credito. Rechace el Credito"}
                         </p>
                     )}
 
                     {evaluationResult !== null && selectedCredit.level === 6 && (
                         <p>
                             {evaluationResult
-                                ? "No se encuentra cerca a la edad maxima '75 años'."
-                                : "Se encuentra muy cercano a la edad maxima '75 años'."}
+                                ? "No se encuentra cerca a la edad maxima '75 años'. Incremente el nivel del Credito"
+                                : "Se encuentra muy cercano a la edad maxima '75 años'. Rechace el Credito"}
                         </p>
                     )}
 
@@ -397,7 +420,7 @@ const CreditEvaluation = () => {
           
           
 
-          {!(selectedCredit && selectedCredit.level === 7) && (
+          {!(selectedCredit && selectedCredit.level === 7 || evaluationResult == false) && (
             <Button
               onClick={handleLevelUp}
               color="primary"
@@ -408,16 +431,17 @@ const CreditEvaluation = () => {
             </Button>
           )}
 
-          <Button
-            onClick={handleAprove}
-            color="primary"
-            variant="contained"
-            disabled={!(selectedCredit && selectedCredit.level === 7 && score === 5)}
-          >
-            Aprobacion
-          </Button>
+          {selectedCredit && selectedCredit.level === 7 && score === 5 && (
+            <Button
+              onClick={handleAprove}
+              color="primary"
+              variant="contained"
+            >
+              Aprobación
+            </Button>
+          )}
           
-
+          {(!(evaluationResult === true) || (selectedCredit.level === 2 || selectedCredit.level === 3)) && (
           <Button
             onClick={handleReject}
             color="primary"
@@ -425,6 +449,29 @@ const CreditEvaluation = () => {
           >
             Rechazar
           </Button>
+        )}
+
+        {score <= 2 && (
+          <Button
+            onClick={handleReject}
+            color="primary"
+            variant="contained"
+          >
+            Rechazar
+          </Button>
+        )}
+
+        {(score === 3 || score === 4) && (
+          <Button
+            onClick={handleMoreRev}
+            color="primary"
+            variant="contained"
+          >
+            Mas Revisiones
+          </Button>
+        )}
+
+
 
         </DialogActions>
       </Dialog>
