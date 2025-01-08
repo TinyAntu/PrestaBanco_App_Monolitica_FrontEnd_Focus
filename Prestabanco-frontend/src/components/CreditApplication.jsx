@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import creditService from '../services/credit.service';
 import documentService from '../services/document.service';
-import { Box, Typography, FormControl, TextField, Button, MenuItem } from "@mui/material";
+import { Box, Typography, FormControl, TextField, Button, MenuItem, Tooltip, IconButton,  } from "@mui/material";
+import InfoIcon from '@mui/icons-material/Info';
 
 const CreditApplication = () => {
     const [userId, setUserId] = useState(null);
@@ -225,13 +226,22 @@ const CreditApplication = () => {
             {type && (
                 <>
                     <FormControl fullWidth>
+                        <Tooltip title="El monto solicitado en pesos chilenos (CLP)">
                         <TextField
-                            label="Capital $CLP"
+                            label="Capital"
                             type="number"
                             value={capital}
                             variant="standard"
                             onChange={(e) => setCapital(e.target.value)}
-                        />
+                            InputProps = {{
+                                endAdornment: (
+                                            <IconButton>
+                                                <InfoIcon />
+                                            </IconButton>
+                                        ),
+                                    }}
+                                />
+                            </Tooltip>
                     </FormControl>
 
                     <FormControl fullWidth>
@@ -248,6 +258,15 @@ const CreditApplication = () => {
                                 max: interestLimits.max,
                                 step: 0.5,
                             }}
+                            InputProps={{
+                                endAdornment: (
+                                    <Tooltip title="Ingresa la tasa de interés anual expresada como porcentaje.">
+                                        <IconButton>
+                                            <InfoIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                ),
+                            }}
                         />
                     </FormControl>
 
@@ -259,43 +278,79 @@ const CreditApplication = () => {
                             value={years}
                             variant="standard"
                             sx={{ width: '650px' }}
-                            placeholder = {`Entre ${yearsLimits.min} y ${yearsLimits.max}`}
+                            placeholder={`Entre ${yearsLimits.min} y ${yearsLimits.max}`}
                             onChange={handleYearsChange}
-                                inputProps={{
-                                    min: yearsLimits.min,
-                                    max: yearsLimits.max,
-                                }}
+                            inputProps={{
+                                min: yearsLimits.min,
+                                max: yearsLimits.max,
+                            }}
+                            InputProps={{
+                                endAdornment: (
+                                    <Tooltip title="Plazo en años para pagar el crédito">
+                                        <IconButton>
+                                            <InfoIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                ),
+                            }}
                         />
                     </FormControl>
 
                     <FormControl fullWidth>
+                        <Tooltip title="Sus ingresos de forma mensuales en pesos chilenos (CLP)">
                         <TextField
-                            label="Ingresos $CLP"
+                            label="Ingresos"
                             type="number"
                             value={income}
                             variant="standard"
                             onChange={(e) => setIncome(e.target.value)}
-                        />
+                            InputProps = {{
+                            endAdornment: (
+                                        <IconButton>
+                                            <InfoIcon />
+                                        </IconButton>
+                                    ),
+                                }}
+                            />
+                        </Tooltip>
                     </FormControl>
 
                     <FormControl fullWidth>
-                        <TextField
-                            label="Valor de la propiedad $CLP"
-                            type="number"
-                            value={property_value}
-                            variant="standard"
-                            onChange={(e) => setPropertyValue(e.target.value)}
-                        />
+                        <Tooltip title="Ingresa el valor estimado de la propiedad en pesos chilenos (CLP)">
+                            <TextField
+                                label="Valor de la propiedad"
+                                type="number"
+                                value={property_value}
+                                variant="standard"
+                                onChange={(e) => setPropertyValue(e.target.value)}
+                                InputProps={{
+                                    endAdornment: (
+                                        <IconButton>
+                                            <InfoIcon />
+                                        </IconButton>
+                                    ),
+                                }}
+                            />
+                        </Tooltip>
                     </FormControl>
 
                     <FormControl fullWidth>
+                        <Tooltip title="Ingresa el valor estimado de la propiedad en pesos chilenos (CLP)">
                         <TextField
-                            label="Deudas actuales $CLP"
+                            label="Deudas actuales"
                             type="number"
                             value={debt}
                             variant="standard"
                             onChange={(e) => setDebt(e.target.value)}
-                        />
+                            InputProps = {{
+                                endAdornment: (
+                                            <IconButton>
+                                                <InfoIcon />
+                                            </IconButton>
+                                        ),
+                                    }}
+                                />
+                            </Tooltip>
                     </FormControl>
 
                     <h3>Estado de los documentos requeridos:</h3>
@@ -445,8 +500,8 @@ const CreditApplication = () => {
                 </>
             )}
             <hr />
-            <Button variant="text" href="/credits/list">
-                Volver a la lista
+            <Button variant="text" component={Link} to="/home">
+                Volver al hogar
             </Button>
         </Box>
     );

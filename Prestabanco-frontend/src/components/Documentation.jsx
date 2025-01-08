@@ -67,7 +67,9 @@ export default function CreditInfo() {
               <br />
               Solicitar Credito : ctrl + 2
               <br />
-              Evaluar Credito : ctrl + 3
+              Seguimiento de Credito Credito : ctrl + 3
+              <br />
+              Evaluar Credito : ctrl + 4
               <br />
               Ayuda : ctrl + 9
               <br />

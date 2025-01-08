@@ -8,7 +8,7 @@ const CreditEvaluation = () => {
   const [credits, setCredits] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
-  const [selectedCredit, setSelectedCredit] = useState(null);
+  const [selectedCredit, setSelectedCredit] = useState({ level: 1 });
   const [evaluationResult, setEvaluationResult] = useState(null);
   const [documents, setDocuments] = useState([]);
   const [responses, setResponses] = useState([null, null, null, null, null]); // For the questions in the level seven
@@ -228,16 +228,21 @@ const CreditEvaluation = () => {
       fetchDocuments(selectedCredit.idCredit);
     }
   }, [selectedCredit]);
+  
 
   useEffect(() => {
     const userTypeId = localStorage.getItem("userTypeId");
-    if (userTypeId !== "2") {
+    let alertShown = false;
+  
+    if (userTypeId !== "2" && !alertShown) {
       navigate("/home");
       alert("Esta es una zona solo para ejecutivos");
+      alertShown = true;
     } else {
       init();
     }
   }, [navigate]);
+  
 
   return (
     <>
@@ -441,25 +446,16 @@ const CreditEvaluation = () => {
             </Button>
           )}
           
-          {(!(evaluationResult === true) || (selectedCredit.level === 2 || selectedCredit.level === 3)) && (
-          <Button
-            onClick={handleReject}
-            color="primary"
-            variant="contained"
-          >
-            Rechazar
-          </Button>
-        )}
-
-        {score <= 2 && (
-          <Button
-            onClick={handleReject}
-            color="primary"
-            variant="contained"
-          >
-            Rechazar
-          </Button>
-        )}
+          {((evaluationResult === false || selectedCredit.level === 2 || selectedCredit.level === 3) || 
+            (score <= 2 && selectedCredit.level === 7)) && (
+            <Button
+              onClick={handleReject}
+              color="primary"
+              variant="contained"
+            >
+              Rechazar
+            </Button>
+          )}
 
         {(score === 3 || score === 4) && (
           <Button

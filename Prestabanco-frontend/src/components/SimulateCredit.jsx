@@ -5,9 +5,12 @@ import {
   TextField,
   Button,
   Typography, MenuItem,
-  Modal
+  Modal,
+  Tooltip, 
+  IconButton
 } from '@mui/material';
 import creditService from '../services/credit.service';
+import InfoIcon from '@mui/icons-material/Info';
 
 const SimulateCredit = () => {
     const [capital, setCapital] = useState("");
@@ -205,6 +208,7 @@ const SimulateCredit = () => {
           </FormControl>
 
           <FormControl margin="normal">
+            <Tooltip title="El monto solicitado en pesos chilenos (CLP)">
               <TextField
                   id="capital"
                   label="Capital $CLP"
@@ -213,7 +217,15 @@ const SimulateCredit = () => {
                   variant="outlined"
                   sx={{ width: '650px' }}
                   onChange={(e) => setCapital(e.target.value)}
-              />
+                  InputProps = {{
+                    endAdornment: (
+                                <IconButton>
+                                    <InfoIcon />
+                                </IconButton>
+                            ),
+                        }}
+                    />
+                </Tooltip>
           </FormControl>
 
           <FormControl margin="normal">
@@ -227,11 +239,20 @@ const SimulateCredit = () => {
                   placeholder={`Entre ${interestLimits.min} y ${interestLimits.max}`}
                   onChange={handleAnnualInterestChange}
                   inputProps={{
-                      min: interestLimits.min,
-                      max: interestLimits.max,
-                      step: 0.5,
-                  }}
-              />
+                    min: interestLimits.min,
+                    max: interestLimits.max,
+                    step: 0.5,
+                }}
+                InputProps={{
+                    endAdornment: (
+                        <Tooltip title="Ingresa la tasa de interés anual expresada como porcentaje.">
+                            <IconButton>
+                                <InfoIcon />
+                            </IconButton>
+                        </Tooltip>
+                    ),
+                }}
+            />
           </FormControl>
 
           <FormControl margin="normal">
@@ -244,11 +265,20 @@ const SimulateCredit = () => {
                   sx={{ width: '650px' }}
                   placeholder = {`Entre ${yearsLimits.min} y ${yearsLimits.max}`}
                   onChange={handleYearsChange}
-                    inputProps={{
-                        min: yearsLimits.min,
-                        max: yearsLimits.max,
-                    }}
-              />
+                  inputProps={{
+                    min: yearsLimits.min,
+                    max: yearsLimits.max,
+                }}
+                InputProps={{
+                    endAdornment: (
+                        <Tooltip title="Plazo en años para pagar el crédito">
+                            <IconButton>
+                                <InfoIcon />
+                            </IconButton>
+                        </Tooltip>
+                    ),
+                }}
+            />
           </FormControl>
 
           <Button variant="contained" color="primary" type="submit" style={{ marginTop: "1rem" }}>

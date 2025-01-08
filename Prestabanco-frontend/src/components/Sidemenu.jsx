@@ -52,8 +52,13 @@ export default function Sidemenu({ open, toggleDrawer }) {
         }
       }
 
-      // Atajo para "Evaluar Créditos" (Ctrl+3)
+      // Atajo para "Seguimiento de solicitud" (Ctrl+3)
       if (event.ctrlKey && event.key === "3") {
+        handleNavigation("/credits/follow");
+      }
+
+      // Atajo para "Evaluar Créditos" (Ctrl+4)
+      if (event.ctrlKey && event.key === "4") {
         handleNavigation("/credits/getAll");
       }
 

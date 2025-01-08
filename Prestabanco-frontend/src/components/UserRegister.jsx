@@ -1,7 +1,8 @@
 import { useState } from "react";
 import userService from "../services/user.service";
-import { Box, Typography, FormControl, TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
+import { Box, Typography, FormControl, TextField, Button, Checkbox, FormControlLabel, Tooltip, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import InfoIcon from '@mui/icons-material/Info';
 
 const UserRegister = () => {
   const [rut, setRut] = useState("");
@@ -96,6 +97,7 @@ const UserRegister = () => {
       </FormControl>
 
       <FormControl margin="normal">
+        <Tooltip title="La contraseña debe tener al menos 8 caracteres" arrow>
         <TextField
           id="password"
           label="Contraseña"
@@ -104,7 +106,15 @@ const UserRegister = () => {
           variant="outlined"
           sx={{ width: '650px' }}
           onChange={(e) => setPassword(e.target.value)}
-        />
+          InputProps = {{
+            endAdornment: (
+                        <IconButton>
+                            <InfoIcon />
+                        </IconButton>
+                    ),
+                }}
+            />
+        </Tooltip>
       </FormControl>
 
       <FormControl margin="normal">
