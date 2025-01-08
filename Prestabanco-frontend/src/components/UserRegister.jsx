@@ -18,6 +18,12 @@ const UserRegister = () => {
     const userRole = role ? 2 : 1; 
     const user = { rut, email, name, password, role: userRole, birthdate };
 
+    const userConfirmed = window.confirm("¿Está seguro de que desea registrarse con estos datos?");
+    if (!userConfirmed) {
+        return; // Detener si el usuario no confirma
+    }
+
+
     userService
     .register(user)
       .then((response) => {

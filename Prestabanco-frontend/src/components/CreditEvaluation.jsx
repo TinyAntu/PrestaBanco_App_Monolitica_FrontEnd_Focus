@@ -134,7 +134,7 @@ const CreditEvaluation = () => {
 
   const handleLevelUp = () => {
 
-    const userConfirmed = window.confirm("¿Está seguro de que desea avanzar al siguiente nivel este crédito?");
+    const userConfirmed = window.confirm("¿Está seguro de que desea avanzar al siguiente etapa este crédito?");
         if (!userConfirmed) {
             return; // Detener si el usuario no confirma
         }
