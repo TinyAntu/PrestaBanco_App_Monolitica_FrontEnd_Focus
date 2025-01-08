@@ -31,18 +31,18 @@ export default function Sidemenu({ open, toggleDrawer }) {
   React.useEffect(() => {
     const handleKeydown = (event) => {
 
-      // Atajo para "Home" (Ctrl+0)
-      if (event.ctrlKey && event.key === "0") {
+      // Atajo para "Home" (Alt+0)
+      if (event.altKey && event.key === "0") {
         handleNavigation("/home");
       }
 
-      // Atajo para "Simular un Crédito" (Ctrl+1)
-      if (event.ctrlKey && event.key === "1") {
+      // Atajo para "Simular un Crédito" (Alt+1)
+      if (event.altKey && event.key === "1") {
         handleNavigation("/credits/simulate");
       }
 
-      // Atajo para "Solicitar Crédito" (Ctrl+2)
-      if (event.ctrlKey && event.key === "2") {
+      // Atajo para "Solicitar Crédito" (Alt+2)
+      if (event.altKey && event.key === "2") {
         if (isLog()) {
           const userId = localStorage.getItem("userId");
           navigate(`/credits/create/${userId}`);
@@ -52,18 +52,18 @@ export default function Sidemenu({ open, toggleDrawer }) {
         }
       }
 
-      // Atajo para "Seguimiento de solicitud" (Ctrl+3)
-      if (event.ctrlKey && event.key === "3") {
+      // Atajo para "Seguimiento de solicitud" (Alt+3)
+      if (event.altKey && event.key === "3") {
         handleNavigation("/credits/follow");
       }
 
-      // Atajo para "Evaluar Créditos" (Ctrl+4)
-      if (event.ctrlKey && event.key === "4") {
+      // Atajo para "Evaluar Créditos" (Alt+4)
+      if (event.altKey && event.key === "4") {
         handleNavigation("/credits/getAll");
       }
 
       // Atajo para "Documentacion" (Ctrl+9)
-      if (event.ctrlKey && event.key === "9") {
+      if (event.altKey && event.key === "9") {
         handleNavigation("/help");
       }
 

@@ -61,17 +61,17 @@ export default function CreditInfo() {
             <p>
               Combinaciones de teclas para acceso rapido<br />
               <br />
-              Home : ctrl + 0
+              Home : Alt + 0
               <br />
-              Simular Credito : ctrl + 1
+              Simular Credito : Alt + 1
               <br />
-              Solicitar Credito : ctrl + 2
+              Solicitar Credito : Alt + 2
               <br />
-              Seguimiento de Credito Credito : ctrl + 3
+              Seguimiento de Credito Credito : Alt + 3
               <br />
-              Evaluar Credito : ctrl + 4
+              Evaluar Credito : Alt + 4
               <br />
-              Ayuda : ctrl + 9
+              Ayuda : Alt + 9
               <br />
             </p>
           </div>
